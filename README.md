@@ -77,4 +77,4 @@ a. These fields include:
 - *Note:* If a spreadsheet is in the above form, it can be used for all three programs. EMR data will be ignored when it isn't needed.
 
 ### Testing
-If these programs are run with the CSU input file found in the Tests directory, the output should match the corresponding output files found in the Tests directory.
+If these programs are run with the example input file found in the directory ./Current Build/Input, the output should match the corresponding test output files found in the directory ./Current Build/Output.
