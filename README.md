@@ -22,13 +22,15 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 
 ![](./Images/Set_Working_Directory.png)
 
-3. Set schoolInputPath to the file path of the data source’s excel spreadsheet (If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another)
+3. Open the analyzer that you want to run
+   1.  Go to the lower right pane in Rstudio and click the files tab. Go to ./Current Build/Code and double-click on the analyzer you want to run.
+4. Set schoolInputPath to the file path of the data source’s excel spreadsheet (If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another)
 
 ![](./Images/Pathnames.png)
 
-4. Run all lines of the program 
-   1. ctrl+a, ctrl+enter 
-5. An analysis spreadsheet will be created in the output folder after “Analysis Complete!” is printed in R’s terminal 
+5. Run all lines of the program 
+   1. Select all the lines by clicking in the script and using the command ctrl+a, then run the script with the command ctrl+enter 
+6. An analysis spreadsheet will be created in the output folder after “Analysis Complete!” is printed in R’s terminal 
    - Note: This may take a while depending on how powerful your computer is; this is a lot of data for one computer to handle. 
    - Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
