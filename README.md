@@ -17,7 +17,7 @@ If you have not previously used Rstudio, it is highly recommended that you watch
 #### Configure
 Configure Rstudio to be compatible with git and pull this repo as a project into Rstudio. For instructions, see [here](https://cfss.uchicago.edu/setup/git-with-rstudio/) (You only need to know how to do the first two steps. This website is a good starting spot if you want any further information on how to use Git/GitHub/R/Rstudio). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). 
 
-Finally, run install.R (found under the home directory of the repository) to install or update all the packages required for running the analyzer. See step 5 under the run section for how to run all the lines in install.r.
+Finally, run install.R (found under the home directory of the repository) to install or update all the packages required for running the analyzer. Under the run section, see step 3 for how to open the script (you'll need to go to the project home directory, not ./Current Build/Code) and see step 5 for how to run all the lines in install.r.
 
 ***\*Two of these programs are desinged to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and will likely have to be encoded by hand.\**** 
 
@@ -31,13 +31,13 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 
 3. Open the analyzer that you want to run
    1.  Go to the lower right pane in Rstudio and click the files tab. Go to ./Current Build/Code and double-click on the analyzer you want to run.
-4. Set schoolInputPath to the file path of the data source’s excel spreadsheet (If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another)
+4. Set schoolInputPath to the file path of the data source’s excel spreadsheet. It is recommended that you put your input file in the input directory and simply change the name of the Excel sheet (the part after ./Current Build/Input) to match the name of your Excel sheet. (If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another)
 
 ![](./Images/Pathnames.png)
 
 5. Run all lines of the program 
    1. Select all the lines by clicking in the script and using the command ctrl+a, then run the script with the command ctrl+enter 
-6. An analysis spreadsheet will be created in the output folder after “Analysis Complete!” is printed in R’s terminal 
+6. An analysis spreadsheet will be created in the folder ./Current Build/Output after “Analysis Complete!” is printed in R’s terminal. To view this file, go to the files tab in the lower right hand panel of Rstudio and go to the folder ./Current Build/Output and click on the file, then click view file. 
    - Note: This may take a while depending on how powerful your computer is; this is a lot of data for one computer to handle. 
    - Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
