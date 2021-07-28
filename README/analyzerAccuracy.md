@@ -1,4 +1,4 @@
-# Automatically Generated Documentation for .\analyzerAccuracyV2.R
+# Automatically Generated Documentation for .\analyzerAccuracy.R
 ## createRenamedVetCot
 Creates a copy of the VetCot input in a format we can compare
 ### Parameters
