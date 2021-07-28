@@ -10,7 +10,7 @@ This project is designed to help schools assess the quality of their VetCot data
 For a detailed description of each program, see the corresponding README file in the README folder.
 
 #### Configure
-Configure Rstudio to be compatible with git and pull this repo as a project into Rstudio. For insructions, see [here](https://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Finally, run install.R to install or update all the packages required for running the analyzer. See step 5 for how to run all the lines in install.r.
+Configure Rstudio to be compatible with git and pull this repo as a project into Rstudio. For insructions, see [here](https://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Finally, run install.R to install or update all the packages required for running the analyzer. See step 5 under the run section for how to run all the lines in install.r.
 
 ***\*Two of these programs are desinged to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and will likely have to be encoded by hand.\**** 
 
