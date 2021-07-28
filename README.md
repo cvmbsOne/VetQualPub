@@ -37,7 +37,7 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 
 5. Run all lines of the program 
    1. Select all the lines by clicking in the script and using the command ctrl+a, then run the script with the command ctrl+enter 
-6. An analysis spreadsheet will be created in the folder ./Current Build/Output after “Analysis Complete!” is printed in R’s terminal 
+6. An analysis spreadsheet will be created in the folder ./Current Build/Output after “Analysis Complete!” is printed in R’s terminal. To view this file, go to the files tab in the lower right hand panel of Rstudio and go to the folder ./Current Build/Output and click on the file, then click view file. 
    - Note: This may take a while depending on how powerful your computer is; this is a lot of data for one computer to handle. 
    - Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
