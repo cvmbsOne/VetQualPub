@@ -14,7 +14,7 @@ If you have not previously used Rstudio, it is highly recommended that you watch
 
 ![](./Images/git_icon.png)
 
-#### Configure
+### Configure
 Configure Rstudio to be compatible with git and pull this repo as a project into Rstudio. For instructions, see [here](https://cfss.uchicago.edu/setup/git-with-rstudio/) (You only need to know how to do the first two steps. This website is a good starting spot if you want any further information on how to use Git/GitHub/R/Rstudio). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). 
 
 Finally, run install.R (found under the home directory of the repository) to install or update all the packages required for running the analyzer. Under the run section, see step 3 for how to open the script (you'll need to go to the project home directory, not ./Current Build/Code) and see step 5 for how to run all the lines in install.r.
