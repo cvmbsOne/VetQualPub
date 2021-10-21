@@ -15,7 +15,9 @@ If you have not previously used Rstudio, it is highly recommended that you watch
 ### Configure
 If you simply want to run the code with the provided test data or your own data, and don’t need to interact with git version control then simply download the code manually by clicking the green "Code" link at the base page of this repository. 
 
-Optionally, If you want to configure RStudio to be compatible with git version control and pull, fork code etc, you can review [this](https://cfss.uchicago.edu/setup/git-with-rstudio/) link for general info on how to integrate Rstudio projects with GitHub repositories (You only need to know how to do the first two steps. This website is a good starting spot if you want any further information on how to use Git/GitHub/R/Rstudio). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
+![](./Images/Green_Code_Button.png)
+
+*Optional: if you want to configure RStudio to be compatible with git version control and pull, fork code etc, you can review [this](https://cfss.uchicago.edu/setup/git-with-rstudio/) link for general info on how to integrate Rstudio projects with GitHub repositories (You only need to know how to do the first two steps. This website is a good starting spot if you want any further information on how to use Git/GitHub/R/Rstudio). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
 ***\*Two of these programs are desinged to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and will likely have to be encoded by hand.\**** 
 
