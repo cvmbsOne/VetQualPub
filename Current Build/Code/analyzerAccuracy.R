@@ -38,7 +38,7 @@ schoolInputPath  = "./Current Build/Input/CopyOfCSU-sep.xlsx"
 
 #A string that is the column name of the variable for the side by side comparison
 #Only change this if you want to compare something other than pcv in the SBS comparison
-SBSvar = "pcv"
+SideBySideComparisonVariable = "pcv"
 
 ##################################################################################
 ##################################################################################
@@ -739,7 +739,7 @@ getSideBySide <- function(dataset, var) {
   return(out)
 }
 
-sideBySide <- getSideBySide(schoolInput, SBSvar)
+sideBySide <- getSideBySide(schoolInput, SideBySideComparisonVariable)
 
 #' Get all discrepancy calculations for multiple data sets
 #' 
