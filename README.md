@@ -50,7 +50,7 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 1. The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
 1. The input school’s spreadsheet must be separated into sheets in this order, excluding Optional entry sheets if they are not present in your desired data: 
    1. RedCAP entries (with both optional and mandatory variables) 
-   1. EMR Mandatory entries (with both optional and mandatory variables) 
+   1. EMR entries (with both optional and mandatory variables) 
 1. Optional Variables are defined as the following: 
 1. AFASTYN 
 1. TFASTYN 
