@@ -9,6 +9,17 @@
 #FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 #WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#This code was throughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
+#please contact us at ################################ so we can fix that for future users. Before contacting us, please make sure you have found a bug by
+#verifying that you can successfully run this script with the example input and output files provided. If anything on this repository is unclear, please
+#contact us so we can adjust our documentation.
+
+#The following three lines can be commented out to optimize performance AFTER you have run at least one program from this repository.
+#To comment a line, simply place a '#' character before the line.
+install.packages("readxl")
+install.packages("writexl")
+install.packages("dplyr")
+
 library(readxl)
 library(writexl)
 library(dplyr)
@@ -19,11 +30,15 @@ library(dplyr)
 
 
 #File path for the school trauma center's .xlsx file
+##################################################################################
+######### THIS VARIABLE MUST BE ADJUSTED IF YOU WANT TO RUN ######################
+############## ANALYSIS AGAINST YOUR OWN INPUT FILES #############################
+##################################################################################
 schoolInputPath  = "./Current Build/Input/CopyOfCSU-sep.xlsx"
 
 #A string that is the column name of the variable for the side by side comparison
 #Only change this if you want to compare something other than pcv in the SBS comparison
-SBSvar = "pcv"
+SideBySideComparisonVariable = "pcv"
 
 ##################################################################################
 ##################################################################################
@@ -724,7 +739,7 @@ getSideBySide <- function(dataset, var) {
   return(out)
 }
 
-sideBySide <- getSideBySide(schoolInput, SBSvar)
+sideBySide <- getSideBySide(schoolInput, SideBySideComparisonVariable)
 
 #' Get all discrepancy calculations for multiple data sets
 #' 
