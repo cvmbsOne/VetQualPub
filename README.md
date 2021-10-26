@@ -65,9 +65,7 @@ The VetCot data doesn't have to be modified and if not running analyzerAccuracy.
    - presentationDate 
    - entryDate 
 4. Records must have matching entries in the ‘caseNum’ field to be correctly joined between sheets - this is the primary key that all comparative analysis hinges on 
-5. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* 
-
-a. These fields include: 
+5. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* These fields include: 
 
    - weightCat 
    - weightDog 
@@ -82,6 +80,53 @@ a. These fields include:
 6. There should be NO blank rows in the data; this is fatal to the program.
 - **Important Note:** The first page of the Excel sheet must be VetCot data and the second page must be EMR data (if EMR data is being used). The programs rely on this fact.
 - *Note:* If a spreadsheet is in the above form, it can be used for all three programs. EMR data will be ignored when it isn't needed.
+### Mapping of RedCap fields to EMR fields
+In case there are any questions about the meaning of EMR fields, we have provided the corresponding RedCap fields. For more information about the EMR field, simply look up information on the RedCap field. The list is in the form <EMR field> <corresponding RedCap field>.
+   - ID tr_subject_id
+   - presentationDate tr_date_of_hosp
+   - species tr_species
+   - catBreed tr_cat_breed
+   - dogBreed tr_dog_breed
+   - dogAge tr_age_canine
+   - catAge tr_feline_age
+   - sex tr_sex
+   - weightDog tr_weight
+   - weightCat tr_weight2_436
+   - priorDVM tr_prior_treat
+   - opK9 opk9_status
+   - priorNonDVM pre_hosp_non_dvm_yn
+   - traumaType tr_trauma_type
+   - bluntScale tr_trauma_blunt
+   - penetratingScale tr_trauma_penet
+   - traumaDateYN tr_trauma_dt_known
+   - traumaTimeYN tr_time_trauma_known
+   - presentation_time_known presentation_time_known
+   - ICU tr_icu
+   - motorScale tr_mgcs_motor
+   - brainScale tr_mgcs_brain
+   - consciousScale tr_mgcs_cons
+   - MGCSscore tr_mgcs_score
+   - headinjYN tr_head_inj_yn
+   - spinalinjYN tr_spinal_trauma_yn
+   - perfusionScale tr_att_perf
+   - cardiacScale tr_att_card
+   - respScale tr_att_resp
+   - eyeMuscleSkinScale tr_att_emi
+   - skeletalScale tr_att_skel
+   - neuroScale tr_att_neuro
+   - ATTscore tr_att_score
+   - surgeryYN o_surgery
+   - bloodProductsYN o_blood_yn
+   - outcome o_outcome
+   - outcomeDate o_outcome_dt
+   - AFASTYN trs_afast
+   - TFASTYN trs_tfast
+   - bloodLactate trs_blood_lac
+   - baseExcess trs_base_ex
+   - ionCalcium trs_ion_ca
+   - pcv trs_pcv
+   - TS trs_solids
+   - bloodGlucose trs_glucose
 
 ### Testing
 If these programs are run with the example input file found in the directory ./Current Build/Input, the output should match the corresponding test output files found in the directory ./Current Build/Output.
