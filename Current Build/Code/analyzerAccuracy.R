@@ -34,7 +34,7 @@ library(dplyr)
 ######### THIS VARIABLE MUST BE ADJUSTED IF YOU WANT TO RUN ######################
 ############## ANALYSIS AGAINST YOUR OWN INPUT FILES #############################
 ##################################################################################
-schoolInputPath  = "./Current Build/Input/CopyOfCSU-sep.xlsx"
+schoolInputPath  = "./Current Build/Input/TestInput.xlsx"
 
 #A string that is the column name of the variable for the side by side comparison
 #Only change this if you want to compare something other than pcv in the SBS comparison
