@@ -47,38 +47,38 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
    - Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
 ### Data Requirements
-1. The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
+The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
 1. The input school’s spreadsheet must be separated into sheets in this order, excluding Optional entry sheets if they are not present in your desired data: 
-   1. RedCAP entries (with both optional and mandatory variables) 
-   1. EMR entries (with both optional and mandatory variables) 
-1. Optional Variables are defined as the following: 
-1. AFASTYN 
-1. TFASTYN 
-1. bloodLactate 
-1. baseExcess 
-1. ionCalcium 
-1. pcv 
-1. TS 
-1. bloodGlucose 
+   a. RedCAP entries (with both optional and mandatory variables) 
+   b. EMR entries (with both optional and mandatory variables) 
+2. Optional Variables are defined as the following: 
+   - AFASTYN 
+   - TFASTYN 
+   - bloodLactate 
+   - baseExcess 
+   - ionCalcium 
+   - pcv 
+   - TS 
+   - bloodGlucose 
 3. The following fields may be a combination of string and numeric-typed values, as they have been already specified as non-numeric in code: 
-1. ID 
-1. presentationDate 
-1. entryDate 
+   - ID 
+   - presentationDate 
+   - entryDate 
 4. Records must have matching entries in the ‘caseNum’ field to be correctly joined between sheets - this is the primary key that all comparative analysis hinges on 
-4. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* 
+5. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* 
 
 a. These fields include: 
 
-1. weightCat 
-2. weightDog 
-2. catAge 
-2. dogAge 
-2. ionCalcium 
-2. pcv 
-2. TS 
-8. bloodGlucose 
-9. bloodLactate 
-9. baseExcess 
+   - weightCat 
+   - weightDog 
+   - catAge 
+   - dogAge 
+   - ionCalcium 
+   - pcv 
+   - TS 
+   - bloodGlucose 
+   - bloodLactate 
+   - baseExcess 
 6. There should be NO blank rows in the data; this is fatal to the program.
 - **Important Note:** The first page of the Excel sheet must be VetCot data and the second page must be EMR data (if EMR data is being used). The programs rely on this fact.
 - *Note:* If a spreadsheet is in the above form, it can be used for all three programs. EMR data will be ignored when it isn't needed.
