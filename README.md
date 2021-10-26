@@ -80,6 +80,9 @@ The VetCot data doesn't have to be modified and if not running analyzerAccuracy.
 6. There should be NO blank rows in the data; this is fatal to the program.
 - **Important Note:** The first page of the Excel sheet must be VetCot data and the second page must be EMR data (if EMR data is being used). The programs rely on this fact.
 - *Note:* If a spreadsheet is in the above form, it can be used for all three programs. EMR data will be ignored when it isn't needed.
+### Testing
+If these programs are run with the example input file found in the directory ./Current Build/Input, the output should match the corresponding test output files found in the directory ./Current Build/Output.
+
 ### Mapping of RedCap fields to EMR fields
 In case there are any questions about the meaning of EMR fields, we have provided the corresponding RedCap fields. For more information about the EMR field, simply look up information on the RedCap field. The list is in the form <EMR field> <corresponding RedCap field>.
    - ID tr_subject_id
@@ -128,5 +131,3 @@ In case there are any questions about the meaning of EMR fields, we have provide
    - TS trs_solids
    - bloodGlucose trs_glucose
 
-### Testing
-If these programs are run with the example input file found in the directory ./Current Build/Input, the output should match the corresponding test output files found in the directory ./Current Build/Output.
