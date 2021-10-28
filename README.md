@@ -17,7 +17,7 @@ If you only want to run the code with the provided test data or your own data, a
 
 ![](./Images/Green_Code_Button.png)
 
-Before you run the code, you will have to use the files tab in Rstudio to find the home directory. Then click on the file VetCot-R.Rproj.
+Before you run the code, you will have to use the files tab in Rstudio to find the downloaded project's home directory. Then click on the file VetCot-R.Rproj.
 
 ![](./Images/Rproj.png)
 
