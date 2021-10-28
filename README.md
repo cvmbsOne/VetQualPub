@@ -35,7 +35,7 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 
 3. Open the analyzer that you want to run
    1.  Go to the lower right pane in Rstudio and click the files tab. Go to ./Current Build/Code and double-click on the analyzer you want to run.
-4. Set schoolInputPath to the file path of the data source’s excel spreadsheet. It is recommended that you put your input file in the input directory and simply change the name of the Excel sheet (the part after ./Current Build/Input) to match the name of your Excel sheet. If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another. 
+4. Set schoolInputPath to the file path of the data source’s excel spreadsheet. To do this, put your input file in the input directory (./Current Build/Input) and change the name of the Excel sheet (the part after ./Current Build/Input) to match the name of your Excel sheet. If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another. 
    
    **IMPORTANT:** Be 100% certain that the name of the excel file matches the name of the input file you uploaded to the input directory. DO NOT change the path portion of schoolInputPath. Failure to follow these instructions will likely result in the error message, "could not find function read_excel"
 
