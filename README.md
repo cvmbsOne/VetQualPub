@@ -62,9 +62,10 @@ The VetCot data doesn't have to be modified and if not running analyzerAccuracy.
    - TS 
    - bloodGlucose 
 3. The following fields may be a combination of string and numeric-typed values, as they have been already specified as non-numeric in code: 
+   - caseNum
    - ID 
    - presentationDate 
-   - entryDate 
+   - entryDate
 4. Records must have matching entries in the ‘caseNum’ field to be correctly joined between sheets - this is the primary key that all comparative analysis hinges on 
 5. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* These fields include: 
 
