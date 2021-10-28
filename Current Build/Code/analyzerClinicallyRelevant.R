@@ -19,7 +19,7 @@ library(dplyr)
 
 
 #File path for the school trauma center's .xlsx file
-schoolInputPath  = "./Current Build/Input/CopyOfCSU-sep.xlsx"
+schoolInputPath  = "./Current Build/Input/TestInput.xlsx"
 
 ##################################################################################
 ##################################################################################
