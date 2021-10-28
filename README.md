@@ -49,9 +49,9 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 
 ### Data Requirements
 The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
-1. The input school’s spreadsheet must be separated into sheets in this order, excluding Optional entry sheets if they are not present in your desired data: 
-   a. RedCAP entries (with both optional and mandatory variables) 
-   b. EMR entries (with both optional and mandatory variables) 
+1. The input school’s spreadsheet must be separated into sheets in this order: 
+   1. RedCAP entries (with both optional and mandatory variables) 
+   2. EMR entries (with both optional and mandatory variables) 
 2. The distinction between madatory and optional variables is not significant. Mandatory variables are those we recommend encoding if they are available. Optional variables are those that significant value will likely not be gleaned from. The only variable that is truely requiered is caseNum. Optional Variables are defined as the following: 
    - AFASTYN 
    - TFASTYN 
