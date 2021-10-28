@@ -23,7 +23,7 @@ Before you run the code, you will have to use the files tab in Rstudio to find t
 
 *Optional: if you want to configure RStudio to be compatible with git version control and pull, fork code etc, you can review [this](https://cfss.uchicago.edu/setup/git-with-rstudio/) link for general info on how to integrate Rstudio projects with GitHub repositories (You only need to know how to do the first two steps. This website is a good starting spot if you want any further information on how to use Git/GitHub/R/Rstudio). If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
-***\*Two of these programs are desinged to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and will likely have to be encoded by hand.\**** 
+***\*Two of these programs are designed to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and may have to be entered by hand.\**** 
 
 ### Run
 
