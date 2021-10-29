@@ -29,12 +29,12 @@ library(dplyr)
 #Session -> Set Working Directory -> To Project Directory
 
 
-#File path for the school trauma center's .xlsx file
+#File path for the trauma center's .xlsx file
 ##################################################################################
 ######### THIS VARIABLE MUST BE ADJUSTED IF YOU WANT TO RUN ######################
 ############## ANALYSIS AGAINST YOUR OWN INPUT FILES #############################
 ##################################################################################
-schoolInputPath  = "./Current Build/Input/TestInput.xlsx"
+inputFilePath  = "./Current Build/Input/TestInput.xlsx"
 
 #A string that is the column name of the variable for the side by side comparison
 #Only change this if you want to compare something other than pcv in the SBS comparison

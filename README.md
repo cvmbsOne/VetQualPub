@@ -34,8 +34,9 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
 ![](./Images/Set_Working_Directory.png)
 
 3. Open the analyzer that you want to run
-   1.  Go to the lower right pane in Rstudio and click the files tab. Go to ./Current Build/Code and double-click on the analyzer you want to run.
-4. Set schoolInputPath to the file path of the data source’s excel spreadsheet. It is recommended that you put your input file in the input directory and simply change the name of the Excel sheet (the part after ./Current Build/Input) to match the name of your Excel sheet. If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another. 
+   1.  Go to the files tab in the lower right pane in Rstudio. Go to ./Current Build/Code and double-click on the analyzer you want to run.
+4. Set schoolInputPath to the file path of the data source’s excel spreadsheet. To do this, put your input file in the input directory (./Current Build/Input) and change the name of the Excel sheet (the part after ./Current Build/Input) to match the name of your Excel sheet. If running analyzerAccuracy.R, the trauma center data should be in the 'separated' form, meaning that the redcap data is in one sheet and the emr data is in another. 
+   
    **IMPORTANT:** Be 100% certain that the name of the excel file matches the name of the input file you uploaded to the input directory. DO NOT change the path portion of schoolInputPath. Failure to follow these instructions will likely result in the error message, "could not find function read_excel"
 
 ![](./Images/Pathnames.png)
@@ -47,41 +48,88 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
    - Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
 ### Data Requirements
-1. The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
-1. The input school’s spreadsheet must be separated into sheets in this order, excluding Optional entry sheets if they are not present in your desired data: 
+The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
+1. The input school’s spreadsheet must be separated into sheets in this order: 
    1. RedCAP entries (with both optional and mandatory variables) 
-   1. EMR entries (with both optional and mandatory variables) 
-1. Optional Variables are defined as the following: 
-1. AFASTYN 
-1. TFASTYN 
-1. bloodLactate 
-1. baseExcess 
-1. ionCalcium 
-1. pcv 
-1. TS 
-1. bloodGlucose 
+   2. EMR entries (with both optional and mandatory variables) 
+2. The distinction between madatory and optional variables is not significant. Mandatory variables are those we recommend encoding if they are available. Optional variables are those that significant value will likely not be gleaned from. The only variable that is truely required is caseNum. Optional Variables are defined as the following: 
+   - AFASTYN 
+   - TFASTYN 
+   - bloodLactate 
+   - baseExcess 
+   - ionCalcium 
+   - pcv 
+   - TS 
+   - bloodGlucose 
 3. The following fields may be a combination of string and numeric-typed values, as they have been already specified as non-numeric in code: 
-1. ID 
-1. presentationDate 
-1. entryDate 
+   - caseNum
+   - ID 
+   - presentationDate 
+   - entryDate
 4. Records must have matching entries in the ‘caseNum’ field to be correctly joined between sheets - this is the primary key that all comparative analysis hinges on 
-4. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* 
+5. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* These fields include: 
 
-a. These fields include: 
-
-1. weightCat 
-2. weightDog 
-2. catAge 
-2. dogAge 
-2. ionCalcium 
-2. pcv 
-2. TS 
-8. bloodGlucose 
-9. bloodLactate 
-9. baseExcess 
+   - weightCat 
+   - weightDog 
+   - catAge 
+   - dogAge 
+   - ionCalcium 
+   - pcv 
+   - TS 
+   - bloodGlucose 
+   - bloodLactate 
+   - baseExcess 
 6. There should be NO blank rows in the data; this is fatal to the program.
 - **Important Note:** The first page of the Excel sheet must be VetCot data and the second page must be EMR data (if EMR data is being used). The programs rely on this fact.
 - *Note:* If a spreadsheet is in the above form, it can be used for all three programs. EMR data will be ignored when it isn't needed.
-
 ### Testing
 If these programs are run with the example input file found in the directory ./Current Build/Input, the output should match the corresponding test output files found in the directory ./Current Build/Output.
+
+### Mapping of RedCap fields to EMR fields
+In case there are any questions about the meaning of EMR fields, we have provided the corresponding RedCap fields. For more information about the EMR field, simply look up information on the RedCap field. The list is in the form <EMR field> <corresponding RedCap field>.
+   - ID tr_subject_id
+   - presentationDate tr_date_of_hosp
+   - species tr_species
+   - catBreed tr_cat_breed
+   - dogBreed tr_dog_breed
+   - dogAge tr_age_canine
+   - catAge tr_feline_age
+   - sex tr_sex
+   - weightDog tr_weight
+   - weightCat tr_weight2_436
+   - priorDVM tr_prior_treat
+   - opK9 opk9_status
+   - priorNonDVM pre_hosp_non_dvm_yn
+   - traumaType tr_trauma_type
+   - bluntScale tr_trauma_blunt
+   - penetratingScale tr_trauma_penet
+   - traumaDateYN tr_trauma_dt_known
+   - traumaTimeYN tr_time_trauma_known
+   - presentation_time_known presentation_time_known
+   - ICU tr_icu
+   - motorScale tr_mgcs_motor
+   - brainScale tr_mgcs_brain
+   - consciousScale tr_mgcs_cons
+   - MGCSscore tr_mgcs_score
+   - headinjYN tr_head_inj_yn
+   - spinalinjYN tr_spinal_trauma_yn
+   - perfusionScale tr_att_perf
+   - cardiacScale tr_att_card
+   - respScale tr_att_resp
+   - eyeMuscleSkinScale tr_att_emi
+   - skeletalScale tr_att_skel
+   - neuroScale tr_att_neuro
+   - ATTscore tr_att_score
+   - surgeryYN o_surgery
+   - bloodProductsYN o_blood_yn
+   - outcome o_outcome
+   - outcomeDate o_outcome_dt
+   - AFASTYN trs_afast
+   - TFASTYN trs_tfast
+   - bloodLactate trs_blood_lac
+   - baseExcess trs_base_ex
+   - ionCalcium trs_ion_ca
+   - pcv trs_pcv
+   - TS trs_solids
+   - bloodGlucose trs_glucose
+
