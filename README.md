@@ -66,7 +66,6 @@ The VetCot data doesn't have to be modified and if not running analyzerAccuracy.
    - ID 
    - presentationDate 
    - entryDate
-   The two date fields should be of the form mm/dd/yyyy.
 4. Records must have matching entries in the ‘caseNum’ field to be correctly joined between sheets - this is the primary key that all comparative analysis hinges on 
 5. All continuous, numerical columns MUST be devoid of string-type data in order for the column to be recognized as and included in continuous-variable analysis. *(ex. “?1.0” is not allowed, please use “1.0”)* These fields include: 
 
