@@ -365,8 +365,6 @@ getAllErrors <- function(dataset, optionalTotal) {
       mismatches <- getMismatches(dataset, colGen)
       congruity <- round(mismatches / totVal * 100, 2)
       
-      #TODO: update checksum
-      
       out[colGen, "Variable"]   <- colGen
       out[colGen, "Total"]      <- total
       out[colGen, "Comparisons Possible"]<- totVal
