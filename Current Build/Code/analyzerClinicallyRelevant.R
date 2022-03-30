@@ -116,10 +116,10 @@ ICA  <- getScoreThreshold(VetCotInput, 'trs_ion_ca', "-1", 1.24, FALSE)
 fname = "./Current Build/Output/Output_Clinically_Relevant_Cases.xlsx"
 
 write_xlsx(list(
-  "AFAST >= 3"    = as.data.frame(AFASTOutliers),
-  "ATT > 0"       = as.data.frame(ATT),
-  "MGCS < 18"     = as.data.frame(MGCS),
-  "BE < -6.6"     = as.data.frame(BE),
-  "ICA < 1.24"    = as.data.frame(ICA)), fname)
+  "AFAST >= 3"    = as.data.frame(AFASTOutliers, stringsAsFactors = FALSE),
+  "ATT > 0"       = as.data.frame(ATT, stringsAsFactors = FALSE),
+  "MGCS < 18"     = as.data.frame(MGCS, stringsAsFactors = FALSE),
+  "BE < -6.6"     = as.data.frame(BE, stringsAsFactors = FALSE),
+  "ICA < 1.24"    = as.data.frame(ICA, stringsAsFactors = FALSE)), fname)
 
 print("Analysis Complete!")

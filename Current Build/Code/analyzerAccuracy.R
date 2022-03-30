@@ -46,8 +46,8 @@ SideBySideComparisonVariable = "pcv"
 ##################################################################################
 ##################################################################################
 
-VetCotInput <- read_excel(schoolInputPath, sheet=1, col_types = "text")
-EMRinput    <- read_excel(schoolInputPath, sheet=2, col_types = "text")
+VetCotInput <- read_excel(inputFilePath, sheet=1, col_types = "text")
+EMRinput    <- read_excel(inputFilePath, sheet=2, col_types = "text")
 
 #ACCURACY
 #   The accuracy of the veterinary trauma registry will be evaluated
@@ -348,7 +348,7 @@ getMissing<- function(dataset, field, optionalTotal) {
 #' @param optionalTotal A number, the number of records containing optional fields
 #' @return A data frame, containing the error calculations
 getAllErrors <- function(dataset, optionalTotal) {
-  out <- data.frame()
+  out <- data.frame(stringsAsFactors = FALSE)
   #the total records is the same for all fields
   total <- length(dataset$caseNum)
   for(col in as.vector(colnames(dataset))) {
@@ -431,7 +431,7 @@ incrementMismatchIfNeeded <- function(mismatch, VetCotField, VetCotFieldValue, E
 #' @param mismatch The total number of mismatches found
 #' @return A row to be inserted into the missing summary
 createMissingSummaryRow <- function(dataset, total, mismatch){
-  out <- data.frame()
+  out <- data.frame(stringsAsFactors = FALSE)
   
   speciesFlag <- F
   dateFlag <- F
@@ -470,7 +470,7 @@ getMissingSummary <- function(dataset) {
                     "Total Variables screened" = numeric(),
                     "Species Match?" = character(),
                     "Presentation Date Match?" = character(),
-                    "All Critical Factors Match?" = character())
+                    "All Critical Factors Match?" = character(), stringsAsFactors = FALSE)
   
   for(x in 1:nrow(dataset)) {
     mismatch <- 0
@@ -511,7 +511,7 @@ schoolError <- getAllErrors(schoolInput, schoolO)
 #' @param flip A boolean, indicating the subtraction direction, T=Vetcot-EMR, F=EMR-Vetcot
 #' @return A data frame, the discrepancy between VetCot and EMR for all fields in original dataset
 getDiscrepancyDF <- function(dataset, flip=F) {
-  cont <- data.frame()
+  cont <- data.frame(stringsAsFactors = FALSE)
   casenums <- dataset$caseNum
   for(x in 1:length(casenums)) {
     thisCont <- filter(dataset, grepl(casenums[x], caseNum))
@@ -562,7 +562,7 @@ getDiscrepancyDF <- function(dataset, flip=F) {
 #' @param fields A vector, containing the fields to be considered (usually continuous, defined above)
 #' @return A data frame, the % discrepancy between VetCot and EMR for all fields, relative to VetCot value
 getPercentDiscrepancyRangeDF <- function(discrep, dataset, fields) {
-  perc <- data.frame()
+  perc <- data.frame(stringsAsFactors = FALSE)
   caseNums <- discrep$casenum
   for(x in 1:length(caseNums)) {
     perc[x, "casenum"] <- caseNums[x]
@@ -602,7 +602,7 @@ getPercentDiscrepancyRangeDF <- function(discrep, dataset, fields) {
 #' @return A data frame, containing the % errors and discrepancy calculations for dataset
 getResults <- function(dataset, columns, toAppend) {
   fields <- as.vector(columns)
-  results <- as.data.frame(toAppend, check.names=F, fix.empty.names=F)
+  results <- as.data.frame(toAppend, check.names=F, fix.empty.names=F, stringsAsFactors = FALSE)
   A <- getDiscrepancyDF(dataset, F)
   B <- getDiscrepancyDF(dataset, T)
   percA <- getPercentDiscrepancyRangeDF(A, dataset, continuous)
@@ -651,7 +651,7 @@ countRepeats = function(vectorWithDuplicates, itemToCompare){
 #' @param dataset A data frame, a natural join of VetCOT and EMR values
 #' @return A row to append to the duplicates already found
 createDuplicatesRow = function(caseNum, dataset){
-  out = data.frame()
+  out = data.frame(stringsAsFactors = FALSE)
   out[1, "Case Number"] = caseNum
   
   occuranceRows = extractDuplicateRows(caseNum, dataset)
@@ -673,7 +673,8 @@ getDuplicateCaseNums <- function(dataset) {
   out = data.frame("Case Number" = character(),
                    "Number of Occurrences" = numeric(),
                    "Presentation Date Matches" = numeric(),
-                   "Presentation Date Mismatches" = numeric())
+                   "Presentation Date Mismatches" = numeric(),
+                   stringsAsFactors = FALSE)
   
   outRow = 1
   checkedCaseNums = c()
@@ -703,7 +704,7 @@ dupsSheet = getDuplicateCaseNums(VetCotInput)
 #' @param var A string, the variable to compare side by side
 #' @return A data frame, the pcv readings side by side
 getSideBySide <- function(dataset, var) {
-  out <- data.frame()
+  out <- data.frame(stringsAsFactors = FALSE)
   varx = paste(var, ".x", sep = "")
   vecX = dataset[[varx]]
   vary = paste(var, ".y", sep = "")
@@ -756,8 +757,16 @@ getAllResults <- function(sets, columns, errors, names) {
     } else if(x == length(names)-1){
       bundled[[names[x]]] = sideBySide
     } else {
-      theseResults <- getResults(as.data.frame(sets[x], check.names=F, fix.empty.names=F), columns, as.data.frame(errors[x], check.names=F, fix.empty.names=F))
-      bundled[[names[x]]] <- as.data.frame(theseResults)
+      theseResults <- getResults(as.data.frame(sets[x], 
+                                               check.names=F, 
+                                               fix.empty.names=F, 
+                                               stringsAsFactors = FALSE), 
+                                 columns, 
+                                 as.data.frame(errors[x], 
+                                               check.names=F, 
+                                               fix.empty.names=F, 
+                                               stringsAsFactors = FALSE))
+      bundled[[names[x]]] <- as.data.frame(theseResults, stringsAsFactors = FALSE)
     }
   }
   fname = "./Current Build/Output/Output_Accuracy.xlsx"

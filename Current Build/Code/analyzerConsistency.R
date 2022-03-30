@@ -37,7 +37,7 @@ catVars <- c("tr_cat_breed", "tr_feline_age", "tr_weight2_436")
 #' @param dataset A data frame, the VetCot sheet of a trauma center
 #' @return A data frame, containing the entered and blank counts of each variable 
 getCompletenessByVariable <- function(dataset) {
-  out <- data.frame()
+  out <- data.frame(stringsAsFactors = FALSE)
   fields <- as.vector(colnames(dataset))
   for(field in fields) {
     entered <- 0 
@@ -125,7 +125,7 @@ integerToDate <- function(dateNumber){
 #' @param indate  A number, the int representation of a date code - the supposed "after" time.
 #' @return A number, a total in dataset where the dates are impossible.
 getDateInconsistency <- function(dataset, indate, outdate) {
-  out <- data.frame()
+  out <- data.frame(stringsAsFactors = FALSE)
   inconsistent <- filter(dataset, dataset[[indate]] > dataset[[outdate]])
   if(!is.na(inconsistent$tr_case_number[1])){
     for(x in 1:nrow(inconsistent)) {
@@ -210,9 +210,9 @@ getSubsetDogs <- function(dataset, breeds, weight, toAppend) {
   return(subsetDogs)
 }
 
-smallDogs <- getSubsetDogs(VetCotInput, smallDogBreeds, 10, data.frame())
+smallDogs <- getSubsetDogs(VetCotInput, smallDogBreeds, 10, data.frame(stringsAsFactors = FALSE))
 
-bigDogs <- getSubsetDogs(VetCotInput, largeDogBreeds, 40, data.frame())
+bigDogs <- getSubsetDogs(VetCotInput, largeDogBreeds, 40, data.frame(stringsAsFactors = FALSE))
 
 
 
@@ -222,7 +222,7 @@ bigDogs <- getSubsetDogs(VetCotInput, largeDogBreeds, 40, data.frame())
 #' @param weight A number, a threshold that cats will be included if ABOVE
 #' @return A data frame, containing all cats of specified breeds that exceed threshold.
 getSubsetCats <- function(dataset, weight) {
-  subsetCats <- data.frame()
+  subsetCats <- data.frame(stringsAsFactors = FALSE)
   catsOfWeight <- filter(dataset, as.numeric(dataset[['tr_weight2_436']]) > weight)
   if(nrow(catsOfWeight) == 0) {
     return(NULL)
@@ -246,7 +246,7 @@ bigCats <- getSubsetCats(VetCotInput, 10)
 #' @param weightTreshold A number, the lower limit of weights to filter out, i.e. all dogs this weight and above will be filtered out
 #' @return A data frame, all dog cases where the patient exceeds the age threshold
 getAgeSubsetDogs <- function(dataset, age, weightTreshold) {
-  subset <- data.frame()
+  subset <- data.frame(stringsAsFactors = FALSE)
   dogsOfAge <- filter(dataset, dataset[['tr_dog_breed']] %in% names(largeDogBreeds))
   dogsOfAge <- filter(dogsOfAge, as.numeric(dogsOfAge[['tr_age_canine']]) > age)
   dogsOfAge <- filter(dogsOfAge, as.numeric(dogsOfAge[['tr_weight']]) < weightTreshold)
@@ -270,12 +270,12 @@ percentComplete <- getCompletenessByVariable(VetCotInput)
 
 fname = "./Current Build/Output/Output_Consistency_And_Completeness.xlsx"
 
-write_xlsx(list("Small Canines > 10kg"            = as.data.frame(smallDogs),
-                "Canines > 40kg"                  = as.data.frame(bigDogs),
-                "Felines > 10kg"                  = as.data.frame(bigCats),
-                "Large Breeds >3mos and <15kg"    = as.data.frame(oldDogs),
-                "Presentation < Trauma"           = as.data.frame(traumaDateInconsistency),
-                "Outcome < Presentation"          = as.data.frame(regDateInconsistency),
-                Completeness                      = as.data.frame(percentComplete)), fname)
+write_xlsx(list("Small Canines > 10kg"            = as.data.frame(smallDogs, stringsAsFactors = FALSE),
+                "Canines > 40kg"                  = as.data.frame(bigDogs, stringsAsFactors = FALSE),
+                "Felines > 10kg"                  = as.data.frame(bigCats, stringsAsFactors = FALSE),
+                "Large Breeds >3mos and <15kg"    = as.data.frame(oldDogs, stringsAsFactors = FALSE),
+                "Presentation < Trauma"           = as.data.frame(traumaDateInconsistency, stringsAsFactors = FALSE),
+                "Outcome < Presentation"          = as.data.frame(regDateInconsistency, stringsAsFactors = FALSE),
+                Completeness                      = as.data.frame(percentComplete, stringsAsFactors = FALSE)), fname)
 
 print("Analysis Complete!")
