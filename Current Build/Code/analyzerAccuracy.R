@@ -16,10 +16,10 @@
 
 #The following three lines can be commented out to optimize performance AFTER you have run at least one program from this repository.
 #To comment a line, simply place a '#' character before the line.
-#install.packages("readxl")
-#install.packages("writexl")
-#install.packages("dplyr")
-#install.packages("rgr")
+install.packages("readxl")
+install.packages("writexl")
+install.packages("dplyr")
+install.packages("rgr")
 
 library(readxl)
 library(writexl)
