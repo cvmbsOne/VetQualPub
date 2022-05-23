@@ -593,6 +593,27 @@ getPercentDiscrepancyRangeDF <- function(discrep, dataset, fields) {
   return(perc)
 }
 
+real_min <- function(row){
+  real_row = row[!is.na(row)]
+  if(length(real_row) == 0){
+    return(0)
+  }
+  else{
+    return(min(real_row))
+  }
+}
+
+real_max <- function(row){
+  real_row = row[!is.na(row)]
+  if(length(real_row) == 0){
+    return(0)
+  }
+  else{
+    return(max(real_row))
+  }
+}
+
+
 #' Get various discrepancy calculations for all fields in a trauma set
 #' Requires previous calculation of % error, via getAllErrors()
 #' 
@@ -609,17 +630,17 @@ getResults <- function(dataset, columns, toAppend) {
   percB <- getPercentDiscrepancyRangeDF(B, dataset, continuous)
   for(x in 1:length(fields)) {
     if(fields[x] %in% colnames(A)) {
-      results[fields[x], "Min Diff"]       <- min(A[[fields[x]]],        na.rm=T)
-      results[fields[x], "Max Diff"]       <- max(A[[fields[x]]],        na.rm=T)
+      results[fields[x], "Min Diff"]       <- real_min(A[[fields[x]]])
+      results[fields[x], "Max Diff"]       <- real_max(A[[fields[x]]])
       results[fields[x], "Median Diff"]    <- median(A[[fields[x]]],     na.rm=T)
-      results[fields[x], "Min % Diff"]     <- min(percA[[fields[x]]],    na.rm=T)
-      results[fields[x], "Max % Diff"]     <- max(percA[[fields[x]]],    na.rm=T)
+      results[fields[x], "Min % Diff"]     <- real_min(percA[[fields[x]]])
+      results[fields[x], "Max % Diff"]     <- real_max(percA[[fields[x]]])
       results[fields[x], "Median % Diff"]  <- median(percA[[fields[x]]], na.rm=T)
-      results[fields[x], "Min |Diff|"]     <- min(B[[fields[x]]],        na.rm=T)
-      results[fields[x], "Max |Diff|"]     <- max(B[[fields[x]]],        na.rm=T)
+      results[fields[x], "Min |Diff|"]     <- real_min(B[[fields[x]]])
+      results[fields[x], "Max |Diff|"]     <- real_max(B[[fields[x]]])
       results[fields[x], "Median |Diff|"]  <- median(B[[fields[x]]],     na.rm=T)
-      results[fields[x], "Min % |Diff|"]   <- min(percB[[fields[x]]],    na.rm=T)
-      results[fields[x], "Max % |Diff|"]   <- max(percB[[fields[x]]],    na.rm=T)
+      results[fields[x], "Min % |Diff|"]   <- real_min(percB[[fields[x]]])
+      results[fields[x], "Max % |Diff|"]   <- real_max(percB[[fields[x]]])
       results[fields[x], "Median % |Diff|"]<- median(percB[[fields[x]]], na.rm=T)
     }
   }
