@@ -19,12 +19,10 @@
 install.packages("readxl")
 install.packages("writexl")
 install.packages("dplyr")
-install.packages("rgr")
 
 library(readxl)
 library(writexl)
 library(dplyr)
-library(rgr)
 
 ##### REMEMBER #####
 #Set working directory to project directory
