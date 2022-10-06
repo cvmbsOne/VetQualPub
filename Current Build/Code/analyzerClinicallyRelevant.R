@@ -9,7 +9,7 @@
 #FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 #WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#This code was throughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
+#This code was thoroughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
 #please contact us at ################################ so we can fix that for future users. Before contacting us, please make sure you have found a bug by
 #verifying that you can successfully run this script with the example input and output files provided. If anything on this repository is unclear, please
 #contact us so we can adjust our documentation.
@@ -42,7 +42,7 @@ inputFilePath  = "./Current Build/Input/TestInput.xlsx"
 ##################################################################################
 ##################################################################################
 
-VetCotInput <- read_excel(schoolInputPath, sheet=1, col_types = "text")
+VetCotInput <- read_excel(inputFilePath, sheet=1, col_types = "text")
 
 #' Get cases with AFAST score greater than or equal to 3
 #' 
@@ -51,6 +51,8 @@ VetCotInput <- read_excel(schoolInputPath, sheet=1, col_types = "text")
 getAFASTOutliers <- function(dataset) {
   return(filter(dataset, as.numeric(dataset[['trs_afast_abd']]) >= 3))
 }
+
+AFASTOutliers <- getAFASTOutliers(VetCotInput)
 
 #' Turns an Excel style date into a human style date. It allows the 
 #' final results to be human readable.
@@ -73,8 +75,6 @@ integersToDates <- function(dateColumn){
   
   return(dateColumn)
 }
-
-AFASTOutliers <- getAFASTOutliers(VetCotInput)
 
 #' Turns all the dates on a VetCot sheet into human readable format
 #' from Excel format
