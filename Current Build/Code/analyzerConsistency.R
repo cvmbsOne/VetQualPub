@@ -9,7 +9,7 @@
 #FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 #WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#This code was throughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
+#This code was thoroughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
 #please contact us at ################################ so we can fix that for future users. Before contacting us, please make sure you have found a bug by
 #verifying that you can successfully run this script with the example input and output files provided. If anything on this repository is unclear, please
 #contact us so we can adjust our documentation.
@@ -42,7 +42,7 @@ inputFilePath  = "./Current Build/Input/TestInput.xlsx"
 ##################################################################################
 ##################################################################################
 
-VetCotInput <- read_excel(schoolInputPath, sheet=1, col_types = "text")
+VetCotInput <- read_excel(inputFilePath, sheet=1, col_types = "text")
 
 dogVars <- c("tr_dog_breed", "tr_age_canine", "tr_weight")
 catVars <- c("tr_cat_breed", "tr_feline_age", "tr_weight2_436")
@@ -137,7 +137,7 @@ integerToDate <- function(dateNumber){
 #' 
 #' @param dataset A data frame, the VetCot sheet of a trauma center
 #' @param indate  A number, the int representation of a date code - the supposed "before" time.
-#' @param indate  A number, the int representation of a date code - the supposed "after" time.
+#' @param outdate  A number, the int representation of a date code - the supposed "after" time.
 #' @return A number, a total in dataset where the dates are impossible.
 getDateInconsistency <- function(dataset, indate, outdate) {
   out <- data.frame(stringsAsFactors = FALSE)
