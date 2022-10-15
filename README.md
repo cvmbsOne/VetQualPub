@@ -1,5 +1,5 @@
 # Introduction
-This project is designed to help schools assess the quality of their VetCot database. The three programs in this Github allow a school to evaluate things such as improbable entries (i.e. a 240 lb dog), mismatches between EMR and VetCot records, etc. This document contains the steps to help set up the environment required to run these programs. A detailed description of each program can be found in the README folder.
+This project is designed to help schools assess the quality of their VetCot database. The three programs in this Github allow a school to evaluate things such as improbable entries (i.e. a 240 lb dog), mismatches between EMR and VetCot records, completeness, etc. This document contains the steps to help set up the environment required to run these programs and how to run them. A detailed description of each program and their outputs can be found in the README folder.
 
 ### Setup
 #### Required Programs
@@ -24,11 +24,11 @@ If you are unable to find this within Rstudio, open VetCot-R.Rproj from your mac
 
 > If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
-***\*Two of these programs are designed to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and may have to be entered by hand.\**** 
+***\*Two of these programs are designed to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below in the Data Requirements section and may have to be entered by hand.\**** 
 
 ### Run
+***\*These steps are sufficient for analyzerClinicallyRelevant.R and analyzerConsistency.R, but analyzerAccuracy.R requires a few additional steps. See READMEaccuracy.md for more info.\****
 
-If the user wants to run analyzerAccuracy.R, before a user attempts to look at and use the program, they must ensure that their spreadsheets of data adhere STRICTLY to the data requirements outlined in the data requirements section found below. For all other programs, simply follow the instructions below.
 1. Extract data from VetCot and put it into an Excel spreadsheet
 2. Set your working directory in R to the project location 
 
@@ -50,11 +50,11 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
    1. Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
 ### Data Requirements
-The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
+***\*This section applies only to the EMR data used for analyzerAccuracy.R.\****
 1. The input school’s spreadsheet must be separated into sheets in this order: 
    1. RedCAP entries (with both optional and mandatory variables) 
    2. EMR entries (with both optional and mandatory variables) 
-2. The distinction between madatory and optional variables is not significant. Mandatory variables are those we recommend encoding if they are available. Optional variables are those that significant value will likely not be gleaned from. The only variable that is truely required is caseNum. Optional Variables are defined as the following: 
+2. There are mandatory and optional variables, the distinction between which is not significant. Mandatory variables are those we recommend encoding if they are available. Optional variables are those that significant value will likely not be gleaned from. The only variable that is truely required is caseNum. Optional variables are defined as the following: 
    - AFASTYN 
    - TFASTYN 
    - bloodLactate 
