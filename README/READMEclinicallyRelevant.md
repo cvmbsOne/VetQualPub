@@ -1,15 +1,7 @@
-This file gives an in-depth description of analyzerClinicallyRelavent.R.
+### Description of the Analysis
+The clinically relevant analyzer is designed to find anomalies which could be clinically relevant. This could be potentially useful in future studies. Each page lists cases which have the specified variable above or below a certain threshold. Each page is labeled with the variable and threshold it searches for.
 
 ### Requirements
-To run analyzerClinicallyRelavent.R, you will need to:
-* Follow the setup in README.md in the home directory of this repository
-* Extract data from the REDCap database
-* Save the REDCap data as an Excel spreadsheet if it isn't already in that format
-* Set the schoolInputPath variable to the path of the Excel sheet
-* Set your working directory to the project directory
-* Run all the lines of code (cntl + a, cntl + enter)
-* After the code finishes running, the output sould be veiwable in the output folder. In Rstudio, simply click on the file name and click view file
+To run analyzerClinicallyRelevant.R, you simply need to follow the 'Run' section of README.md
 
-### Description of the Analysis
-analyzerClinicallyRelavent.R is designed to find anomalies which are clinically relevant. This could be potentially useful in future studies. Each page list only entries which 
-have one variable exceeding or being below a certain threshold. Each page is labled with what entry it searches for as well as the threshold.
+
