@@ -9,7 +9,7 @@
 #FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
 #WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#This code was throughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
+#This code was thoroughly tested with a wide range of data input. However, no testing is perfect. If you come across something you strongly believe is a bug,
 #please contact us at ################################ so we can fix that for future users. Before contacting us, please make sure you have found a bug by
 #verifying that you can successfully run this script with the example input and output files provided. If anything on this repository is unclear, please
 #contact us so we can adjust our documentation.
@@ -144,7 +144,7 @@ renamedVetCotInput <- fillUnusedVetCotColumns(renamedVetCotInput, EMRinput, EMRv
 
 #' Add columns which are needed for analysis if they aren't there
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @return The same dataframe with additional columns initilized to na
 supplementRequiredVariables <- function(dataset) {
   for(x in 1:length(requiredEMRvars)) {
@@ -160,7 +160,7 @@ EMRinput <- supplementRequiredVariables(EMRinput)
 
 
 # Create schoolInput dataframe
-# convention: <field>.x = Digital (VetCOT), <field>.y = Paper (EMR)
+# convention: <field>.x = Digital (VetCot), <field>.y = Paper (EMR)
 
 schoolInput <- merge(renamedVetCotInput, EMRinput, by = "caseNum")
 
@@ -184,8 +184,8 @@ dataExists <- function(data) {
 
 #' Combine species-specific variables into unified fields
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
-#' @return A data frame, a natural join of VetCOT and EMR values with new unified columns added, all other data unchanged
+#' @param dataset A data frame, a natural join of VetCot and EMR values
+#' @return A data frame, a natural join of VetCot and EMR values with new unified columns added, all other data unchanged
 unifySpeciesVariables <- function(dataset) {
   out <- dataset
   
@@ -229,7 +229,7 @@ schoolInput <- unifySpeciesVariables(schoolInput)
 
 #' Determine if a column is numeric or character
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param field A string, the field in question
 #' @return A boolean, True if numeric, false if otherwise.
 columnIsNumeric <- function(dataset, field) {
@@ -268,7 +268,7 @@ MATCH_THRESHOLD <- 0.0
 
 #' Get the number of matches in a field between VetCot and EMR
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param field A string, the field to be compared
 #' @param total A number, the total valid observations
 #' @return A number, the total number of matching fields
@@ -286,7 +286,7 @@ getMatches <- function(dataset, field, total) {
 
 #' Get the number of mismatches in a field between VetCot and EMR
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param field A string, the field to be compared
 #' @return A number, the total number of mismatched entries in a fields
 getMismatches <- function(dataset, field) {
@@ -304,7 +304,7 @@ getMismatches <- function(dataset, field) {
 
 #' Get the number of calculation-valid rows
 #'
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param field A string, the field in question
 #' @param optionalTotal A number, the number of records containing optional fields
 #' @return A number, the total valid rows
@@ -316,7 +316,7 @@ getTotalValid <- function(dataset, field, optionalTotal) {
 
 #' Get the number of observations that are missing in a given field
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param field A string, the field in question
 #' @param optionalTotal A number, the number of records containing optional fields
 #' @return A number, the total missing fields
@@ -344,7 +344,7 @@ getMissing<- function(dataset, field, optionalTotal) {
 
 #' Get all Error calculations for the trauma center
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param optionalTotal A number, the number of records containing optional fields
 #' @return A data frame, containing the error calculations
 getAllErrors <- function(dataset, optionalTotal) {
@@ -399,7 +399,7 @@ atomicEquality <- function(a, b) {
 #' @param VetCotField The name of the field being compared
 #' @param VetCotFieldValue The value found in the VetCot field for this entry
 #' @param EMRfieldValue The value found in the EMR field for this entry
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @return The new number of mismatches
 incrementMismatchIfNeeded <- function(mismatch, VetCotField, VetCotFieldValue, EMRfieldValue, dataset){
   if(is.na(VetCotFieldValue) || is.na(EMRfieldValue)) {
@@ -408,7 +408,7 @@ incrementMismatchIfNeeded <- function(mismatch, VetCotField, VetCotFieldValue, E
   else if(columnIsNumeric(dataset, VetCotField) && !(VetCotField %in% nonNumerics)) {
     if(!is.na(abs(as.numeric(VetCotFieldValue) - as.numeric(EMRfieldValue)) > MATCH_THRESHOLD)) {
       if(abs(as.numeric(VetCotFieldValue) - as.numeric(EMRfieldValue)) > MATCH_THRESHOLD) {
-        #this horrendous nest of if statements brought to you by a complete lack agreement between data source protocols
+        #this horrendous nest of if statements brought to you by a complete lack of agreement between data source protocols
         mismatch <- mismatch + 1
       }
     }
@@ -426,7 +426,7 @@ incrementMismatchIfNeeded <- function(mismatch, VetCotField, VetCotFieldValue, E
 
 #' Helper function for createMissingSummary. Creates one missing summary row and returns it.
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param total The total number of comparisons that can be made
 #' @param mismatch The total number of mismatches found
 #' @return A row to be inserted into the missing summary
@@ -462,7 +462,7 @@ createMissingSummaryRow <- function(dataset, total, mismatch){
 
 #' Get a summary of the number of mismatched field entries by case number from the trauma center
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @return A data frame, the number of mismatched field entries organized by case number
 getMissingSummary <- function(dataset) {
   out <- data.frame("Case Number" = character(),
@@ -475,7 +475,6 @@ getMissingSummary <- function(dataset) {
   for(x in 1:nrow(dataset)) {
     mismatch <- 0
     total <- 0
-    i <- 1
     for(field in  as.vector(colnames(dataset))) {
       #we only want to consider each variable once, so the '.x' variant is chosen arbitrarily
       if(grepl(".x", field, fixed=TRUE)) {
@@ -487,8 +486,6 @@ getMissingSummary <- function(dataset) {
         
         canCompare <- !is.na(VetCotFieldValue) || !is.na(EMRfieldValue)
         if(canCompare) {
-          i<- i+1
-          
           total <- total + 1
           mismatch <- incrementMismatchIfNeeded(mismatch, VetCotField, VetCotFieldValue, EMRfieldValue, dataset)
         }
@@ -507,7 +504,7 @@ schoolError <- getAllErrors(schoolInput, schoolO)
 
 #' Generate a Data Frame of discrepancies between VetCot and EMR fields
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param flip A boolean, indicating the subtraction direction, T=Vetcot-EMR, F=EMR-Vetcot
 #' @return A data frame, the discrepancy between VetCot and EMR for all fields in original dataset
 getDiscrepancyDF <- function(dataset, flip=F) {
@@ -558,7 +555,7 @@ getDiscrepancyDF <- function(dataset, flip=F) {
 #' Get the percentage of the VetCot value that each discrepancy represents for all fields
 #' 
 #' @param discrep A data frame, the discrepancies for continuous fields by case number
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param fields A vector, containing the fields to be considered (usually continuous, defined above)
 #' @return A data frame, the % discrepancy between VetCot and EMR for all fields, relative to VetCot value
 getPercentDiscrepancyRangeDF <- function(discrep, dataset, fields) {
@@ -617,7 +614,7 @@ real_max <- function(row){
 #' Get various discrepancy calculations for all fields in a trauma set
 #' Requires previous calculation of % error, via getAllErrors()
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param columns A list of fields to be considered for append operation
 #' @param toAppend A data frame, the result of getAllErrors(dataset)
 #' @return A data frame, containing the % errors and discrepancy calculations for dataset
@@ -651,13 +648,13 @@ getResults <- function(dataset, columns, toAppend) {
 #' the rows of the dataset that have that case number
 #' 
 #' @param caseNumber A case number to be searched for
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @return A dataframe with only the rows matching the given case number
 extractDuplicateRows = function(caseNumber, dataset){
   return(filter(dataset, tr_case_number == caseNumber))
 }
 
-#' Counts the number of times that an item occures in a vector
+#' Counts the number of times that an item occurs in a vector
 #' 
 #' @param vectorWithDuplicates A vector which has multiple entries and may have duplicates
 #' @param itemToCompare The item to test if it has duplicates
@@ -669,15 +666,15 @@ countRepeats = function(vectorWithDuplicates, itemToCompare){
 #' Prepares a row to be appended after a duplicate has been found in a dataset
 #' 
 #' @param caseNum The caseNumber of the duplicate
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @return A row to append to the duplicates already found
 createDuplicatesRow = function(caseNum, dataset){
   out = data.frame(stringsAsFactors = FALSE)
   out[1, "Case Number"] = caseNum
   
-  occuranceRows = extractDuplicateRows(caseNum, dataset)
-  duplicateCount = nrow(occuranceRows)
-  dateMatches = countRepeats(occuranceRows$tr_date_of_hosp, occuranceRows$tr_date_of_hosp[1])
+  occurrenceRows = extractDuplicateRows(caseNum, dataset)
+  duplicateCount = nrow(occurrenceRows)
+  dateMatches = countRepeats(occurrenceRows$tr_date_of_hosp, occurrenceRows$tr_date_of_hosp[1])
   
   out[1, "Number of Occurrences"] = duplicateCount
   out[1, "Presentation Date Matches"] = dateMatches
@@ -688,7 +685,7 @@ createDuplicatesRow = function(caseNum, dataset){
 
 #' Takes a dataset and returns a data frame of duplicate case numbers
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @return A dataframe with all the duplicate case numbers in the dataset
 getDuplicateCaseNums <- function(dataset) {
   out = data.frame("Case Number" = character(),
@@ -719,9 +716,9 @@ getDuplicateCaseNums <- function(dataset) {
 
 dupsSheet = getDuplicateCaseNums(VetCotInput)
 
-#' Create a data frame with VetCot and EMR any variable reading side by side
+#' Create a data frame with any VetCot and EMR variable reading side by side
 #' 
-#' @param dataset A data frame, a natural join of VetCOT and EMR values
+#' @param dataset A data frame, a natural join of VetCot and EMR values
 #' @param var A string, the variable to compare side by side
 #' @return A data frame, the pcv readings side by side
 getSideBySide <- function(dataset, var) {
@@ -763,7 +760,7 @@ sideBySide <- getSideBySide(schoolInput, SideBySideComparisonVariable)
 
 #' Get all discrepancy calculations for multiple data sets
 #' 
-#' @param sets A list of a data frame, a natural join of VetCOT and EMR values
+#' @param sets A list of a data frame, a natural join of VetCot and EMR values
 #' @param columns A vector of strings, the fields that will be included in analysis (must be continuous, numerical variables)
 #' @param errors A list of a data frame, the ERROR sheets for the trauma center (as calculated by getAllErrors())
 #' @param names A vector of strings, the names of each sheet in the exported .xlsx file

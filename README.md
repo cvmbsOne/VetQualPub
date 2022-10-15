@@ -1,5 +1,5 @@
 # Introduction
-This project is designed to help schools assess the quality of their VetCot database. The three programs in this Github allow a school to evaluate things such as improbable entries (i.e. a 240 lb dog), mismatches between EMR and VetCot records, etc. This document contains the steps to help set up the environment required to run these programs. A detailed description of each program can be found in the README folder.
+This project is designed to help schools assess the quality of their VetCot database. The three programs in this Github allow a school to evaluate things such as improbable entries (i.e. a 240 lb dog), mismatches between EMR and VetCot records, completeness, etc. This document contains the steps to help set up the environment required to run these programs and how to run them. A detailed description of each program and their outputs can be found in the README folder.
 
 ### Setup
 #### Required Programs
@@ -15,7 +15,7 @@ If you only want to run the code with the provided test data or your own data an
 
 ![](./Images/Green_Code_Button.png)
 
-If you want to configure RStudio to be compatible with git version control and pull, fork code, etc, you can review [this](https://cfss.uchicago.edu/setup/git-with-rstudio/) link for general info on how to integrate Rstudio projects with GitHub repositories (You only need to know how to do the first two steps. This website is a good starting point if you want any further information on how to use Git/GitHub/R/Rstudio).  
+If you want to configure RStudio to be compatible with git version control and pull, fork code, etc, you can review [this](https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html) link for general info on how to integrate Rstudio projects with GitHub repositories.  
 
 Before you run the code, use the files tab in Rstudio to find the downloaded project's home directory. Then click on the file VetCot-R.Rproj.
 If you are unable to find this within Rstudio, open VetCot-R.Rproj from your machine's file explorer.
@@ -24,11 +24,11 @@ If you are unable to find this within Rstudio, open VetCot-R.Rproj from your mac
 
 > If you're having trouble with the project, see [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
-***\*Two of these programs are designed to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below and may have to be entered by hand.\**** 
+***\*Two of these programs are designed to run with only RedCAP entries. One program is designed to use data with RedCAP and EMR entries. The EMR entries must follow specific guidlines detailed below in the Data Requirements section and may have to be entered by hand.\**** 
 
 ### Run
+***\*These steps are sufficient for analyzerClinicallyRelevant.R and analyzerConsistency.R, but analyzerAccuracy.R requires a few additional steps. See READMEaccuracy.md for more info.\****
 
-If the user wants to run analyzerAccuracy.R, before a user attempts to look at and use the program, they must ensure that their spreadsheets of data adhere STRICTLY to the data requirements outlined in the data requirements section found below. For all other programs, simply follow the instructions below.
 1. Extract data from VetCot and put it into an Excel spreadsheet
 2. Set your working directory in R to the project location 
 
@@ -50,11 +50,11 @@ If the user wants to run analyzerAccuracy.R, before a user attempts to look at a
    1. Note: you may need to delete, move, or rename previously created spreadsheets before running the program again to receive updated spreadsheets if data/code has changed.
 
 ### Data Requirements
-The VetCot data doesn't have to be modified and if not running analyzerAccuracy.R, this section can be ignored
+***\*This section applies only to the EMR data used for analyzerAccuracy.R.\****
 1. The input school’s spreadsheet must be separated into sheets in this order: 
    1. RedCAP entries (with both optional and mandatory variables) 
    2. EMR entries (with both optional and mandatory variables) 
-2. The distinction between madatory and optional variables is not significant. Mandatory variables are those we recommend encoding if they are available. Optional variables are those that significant value will likely not be gleaned from. The only variable that is truely required is caseNum. Optional Variables are defined as the following: 
+2. There are mandatory and optional variables, the distinction between which is not significant. Mandatory variables are those we recommend encoding if they are available. Optional variables are those that significant value will likely not be gleaned from. The only variable that is truely required is caseNum. Optional variables are defined as the following: 
    - AFASTYN 
    - TFASTYN 
    - bloodLactate 
@@ -89,49 +89,49 @@ If these programs are run with the example input file found in the directory ./C
 
 ### Mapping of RedCap fields to EMR fields
 In case there are any questions about the meaning of EMR fields, we have provided the corresponding RedCap fields. For more information about the EMR field, simply look up information on the RedCap field. The list is in the form `EMR field` &rarr; `corresponding RedCap field`.
-   - ID tr_subject_id
-   - presentationDate tr_date_of_hosp
-   - species tr_species
-   - catBreed tr_cat_breed
-   - dogBreed tr_dog_breed
-   - dogAge tr_age_canine
-   - catAge tr_feline_age
-   - sex tr_sex
-   - weightDog tr_weight
-   - weightCat tr_weight2_436
-   - priorDVM tr_prior_treat
-   - opK9 opk9_status
-   - priorNonDVM pre_hosp_non_dvm_yn
-   - traumaType tr_trauma_type
-   - bluntScale tr_trauma_blunt
-   - penetratingScale tr_trauma_penet
-   - traumaDateYN tr_trauma_dt_known
-   - traumaTimeYN tr_time_trauma_known
-   - presentation_time_known presentation_time_known
-   - ICU tr_icu
-   - motorScale tr_mgcs_motor
-   - brainScale tr_mgcs_brain
-   - consciousScale tr_mgcs_cons
-   - MGCSscore tr_mgcs_score
-   - headinjYN tr_head_inj_yn
-   - spinalinjYN tr_spinal_trauma_yn
-   - perfusionScale tr_att_perf
-   - cardiacScale tr_att_card
-   - respScale tr_att_resp
-   - eyeMuscleSkinScale tr_att_emi
-   - skeletalScale tr_att_skel
-   - neuroScale tr_att_neuro
-   - ATTscore tr_att_score
-   - surgeryYN o_surgery
-   - bloodProductsYN o_blood_yn
-   - outcome o_outcome
-   - outcomeDate o_outcome_dt
-   - AFASTYN trs_afast
-   - TFASTYN trs_tfast
-   - bloodLactate trs_blood_lac
-   - baseExcess trs_base_ex
-   - ionCalcium trs_ion_ca
-   - pcv trs_pcv
-   - TS trs_solids
-   - bloodGlucose trs_glucose
+   - `ID` &rarr; `tr_subject_id`
+   - `presentationDate` &rarr; `tr_date_of_hosp`
+   - `species` &rarr; `tr_species`
+   - `catBreed` &rarr; `tr_cat_breed`
+   - `dogBreed` &rarr; `tr_dog_breed`
+   - `dogAge` &rarr; `tr_age_canine`
+   - `catAge` &rarr; `tr_feline_age`
+   - `sex` &rarr; `tr_sex`
+   - `weightDog` &rarr; `tr_weight`
+   - `weightCat` &rarr; `tr_weight2_436`
+   - `priorDVM` &rarr; `tr_prior_treat`
+   - `opK9` &rarr; `opk9_status`
+   - `priorNonDVM` &rarr; `pre_hosp_non_dvm_yn`
+   - `traumaType` &rarr; `tr_trauma_type`
+   - `bluntScale` &rarr; `tr_trauma_blunt`
+   - `penetratingScale` &rarr; `tr_trauma_penet`
+   - `traumaDateYN` &rarr; `tr_trauma_dt_known`
+   - `traumaTimeYN` &rarr; `tr_time_trauma_known`
+   - `presentation_time_known` &rarr; `presentation_time_known`
+   - `ICU` &rarr; `tr_icu`
+   - `motorScale` &rarr; `tr_mgcs_motor`
+   - `brainScale` &rarr; `tr_mgcs_brain`
+   - `consciousScale` &rarr; `tr_mgcs_cons`
+   - `MGCSscore` &rarr; `tr_mgcs_score`
+   - `headinjYN` &rarr; `tr_head_inj_yn`
+   - `spinalinjYN` &rarr; `tr_spinal_trauma_yn`
+   - `perfusionScale` &rarr; `tr_att_perf`
+   - `cardiacScale` &rarr; `tr_att_card`
+   - `respScale` &rarr; `tr_att_resp`
+   - `eyeMuscleSkinScale` &rarr; `tr_att_emi`
+   - `skeletalScale` &rarr; `tr_att_skel`
+   - `neuroScale` &rarr; `tr_att_neuro`
+   - `ATTscore` &rarr; `tr_att_score`
+   - `surgeryYN` &rarr; `o_surgery`
+   - `bloodProductsYN` &rarr; `o_blood_yn`
+   - `outcome` &rarr; `o_outcome`
+   - `outcomeDate` &rarr; `o_outcome_dt`
+   - `AFASTYN` &rarr; `trs_afast`
+   - `TFASTYN` &rarr; `trs_tfast`
+   - `bloodLactate` &rarr; `trs_blood_lac`
+   - `baseExcess` &rarr; `trs_base_ex`
+   - `ionCalcium` &rarr; `trs_ion_ca`
+   - `pcv` &rarr; `trs_pcv`
+   - `TS` &rarr; `trs_solids`
+   - `bloodGlucose` &rarr; `trs_glucose`
 
